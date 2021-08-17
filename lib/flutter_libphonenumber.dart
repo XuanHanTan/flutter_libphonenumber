@@ -143,6 +143,7 @@ class FlutterLibphonenumber {
       guessedCountry.getPhoneMask(
             format: phoneNumberFormat,
             type: phoneNumberType,
+            maskWithoutCountryCode: removeCountryCode
           ) ??
           '',
     ).apply(
