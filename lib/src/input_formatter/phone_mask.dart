@@ -1,15 +1,17 @@
+import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
+
 class PhoneMask {
   PhoneMask(this.mask);
   final String mask;
   final RegExp _digitRegex = RegExp(r'[0-9]+');
 
   /// Apply the given phone mask to the input string.
-  String apply(
-    String inputString, {
+  String apply(String inputString,
+      {
 
-    /// Optionally remove the country code from the input
-    bool removeCountryCode = false,
-  }) {
+      /// Optionally remove the country code from the input
+      bool removeCountryCode = false,
+      CountryWithPhoneCode? country}) {
     /// If mask is empty, return input string
     if (mask.isEmpty) {
       return inputString;
@@ -35,6 +37,9 @@ class PhoneMask {
         /// Add the non-digit value from the mask to the output
         result.add(mask[i]);
       }
+    }
+    if (country != null) {
+      return result.join().replaceFirst("+" + country.phoneCode, "").trimLeft();
     }
     return result.join();
   }

@@ -143,13 +143,9 @@ class FlutterLibphonenumber {
       guessedCountry.getPhoneMask(
             format: phoneNumberFormat,
             type: phoneNumberType,
-            maskWithoutCountryCode: removeCountryCode
           ) ??
           '',
-    ).apply(
-      number,
-      removeCountryCode: removeCountryCode,
-    );
+    ).apply(number, removeCountryCode: removeCountryCode, country: country);
   }
 
   /// Asynchronously formats a number, returning the e164 and the number's requested format
